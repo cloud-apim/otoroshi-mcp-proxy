@@ -69,11 +69,16 @@ exports.Server = function(opts) {
     } else if (method === "notifications/initialized") {
       ready = true;
     } else if (method === "tools/list") {
+      log_error("onCommand getToolList")
       const r = options.getToolList();
+      log_error("onCommand getToolList r", r)
       if (r.then) {
-        r.then(rz => respond(id, {
-          tools: rz,
-        }));
+        r.then(rz => {
+          log_error("callnack", rz)
+          respond(id, {
+            tools: rz,
+          })
+        });
       } else {
         respond(id, {
           tools: r,

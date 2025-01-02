@@ -3,7 +3,7 @@ const { log_error, log_info } = require('./logger');
 
 exports.Proxy = function(opts) {
 
-  const endpoint = opts.endpoint || process.env.OTOROSHI_ENDPOINT || 'http://mcp.oto.tools:9000/rpc';
+  const endpoint = opts.endpoint || process.env.OTOROSHI_ENDPOINT || 'http://mcp.oto.tools:9999/rpc';
   const clientId = opts.client_id || process.env.OTOROSHI_CLIENT_ID;
   const clientSecret = opts.client_secret || process.env.OTOROSHI_CLIENT_SECRET;
   const clientToken = opts.bearer_token || process.env.OTOROSHI_TOKEN;
@@ -46,11 +46,12 @@ exports.Proxy = function(opts) {
         }
       }).then(r => {
         if (r.status === 200) {
-          r.json().then(rr => {
+          return r.json().then(rr => {
             log_info('list', rr)
+            return rr;
           });
         } else {
-          r.text().then(text => {
+          return r.text().then(text => {
             return {
               "content": [{
                 "type": "text",
@@ -71,14 +72,14 @@ exports.Proxy = function(opts) {
         }
       }).then(r => {
         if (r.status === 200) {
-          r.json().then(content => {
+          return r.json().then(content => {
             return {
               "content": [content],
               "isError": false
             };
           });
         } else {
-          r.text().then(text => {
+          return r.text().then(text => {
             return {
               "content": [{
                 "type": "text",
