@@ -1,0 +1,20 @@
+{
+  "name": "otoroshi-mcp-proxy",
+  "version": "1.0.0",
+  "description": "Local MCP proxy for otoroshi",
+  "author": "Mathieu ANCELIN",
+  "license": "Apache-2.0",
+  "bin": {
+    "otoroshi-mcp-proxy": "./bin/proxy.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "build": "node -e \"require('fs').chmodSync('bin/proxy.js', '755')\""
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
