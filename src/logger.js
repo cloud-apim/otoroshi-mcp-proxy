@@ -23,6 +23,7 @@ function log_info(...args) {
 
 function log_error(...args) {
   log('ERROR', ...args);
+  console.error(...args)
 }
 
 exports.log = log;

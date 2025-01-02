@@ -1,8 +1,9 @@
-const fetch = require('node:fetch');
+const fetch = require('node-fetch');
+const { log_error, log_info } = require('./logger');
 
 exports.Proxy = function(opts) {
 
-  const endpoint = opts.endpoint || process.env.OTOROSHI_ENDPOINT;
+  const endpoint = opts.endpoint || process.env.OTOROSHI_ENDPOINT || 'http://mcp.oto.tools:9000/rpc';
   const clientId = opts.client_id || process.env.OTOROSHI_CLIENT_ID;
   const clientSecret = opts.client_secret || process.env.OTOROSHI_CLIENT_SECRET;
   const clientToken = opts.bearer_token || process.env.OTOROSHI_TOKEN;
@@ -38,14 +39,16 @@ exports.Proxy = function(opts) {
 
     },
     getTools: () => {
+      log_info("calling getTools oto")
       return callOtoroshi({
         body: {
-          method: 'tools/call',
-          params
+          method: 'tools/get',
         }
       }).then(r => {
         if (r.status === 200) {
-          r.json();
+          r.json().then(rr => {
+            log_info('list', rr)
+          });
         } else {
           r.text().then(text => {
             return {
@@ -60,6 +63,7 @@ exports.Proxy = function(opts) {
       });
     },
     toolCall: (params) => {
+      log_info("calling toolCall oto", params)
       return callOtoroshi({
         body: {
           method: 'tools/call',

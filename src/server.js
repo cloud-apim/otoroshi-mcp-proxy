@@ -72,7 +72,7 @@ exports.Server = function(opts) {
       const r = options.getToolList();
       if (r.then) {
         r.then(rz => respond(id, {
-          tools: r,
+          tools: rz,
         }));
       } else {
         respond(id, {
@@ -83,7 +83,7 @@ exports.Server = function(opts) {
       const r = options.getResourceList();
       if (r.then) {
         r.then(rz => respond(id, {
-          resources: r,
+          resources: rz,
         }));
       } else {
         respond(id, {

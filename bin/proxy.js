@@ -1,3 +1,4 @@
+const { log_error } = require('../src/logger');
 const { Server } = require('../src/server');
 
 function getServerCapabilities() {
@@ -68,6 +69,7 @@ function handleToolCall(id, params) {
   }
 }
 
+try {
 const server = Server({
   //capabilities: getServerCapabilities(),
   //infos: getServerInfos(),
@@ -76,3 +78,6 @@ const server = Server({
 });
 
 server.start();
+} catch(e) {
+  log_error(e.message)
+}
