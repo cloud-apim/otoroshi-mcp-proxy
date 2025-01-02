@@ -39,7 +39,6 @@ exports.Proxy = function(opts) {
 
     },
     getTools: () => {
-      log_info("calling getTools oto")
       return callOtoroshi({
         body: {
           method: 'tools/get',
@@ -47,7 +46,6 @@ exports.Proxy = function(opts) {
       }).then(r => {
         if (r.status === 200) {
           return r.json().then(rr => {
-            log_info('list', rr)
             return rr;
           });
         } else {
@@ -63,8 +61,7 @@ exports.Proxy = function(opts) {
         }
       });
     },
-    toolCall: (params) => {
-      log_info("calling toolCall oto", params)
+    toolCall: (id, params) => {
       return callOtoroshi({
         body: {
           method: 'tools/call',
