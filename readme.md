@@ -1,7 +1,6 @@
 # Otoroshi MCP local proxy
 
-
-## Configure Claude Desktop**
+## Configure Claude Desktop
 
 - Locate your config file:
   ```
