@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { log_error } from '../src/logger.js';
 import { Server } from '../src/server.js';
 
