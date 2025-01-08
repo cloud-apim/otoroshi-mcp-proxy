@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
-    "otoroshi-mcp-proxy": "./bin/proxy.js"
+    "otoroshi-mcp-proxy": "./src/bin.js"
   },
   "files": [
     "bin"

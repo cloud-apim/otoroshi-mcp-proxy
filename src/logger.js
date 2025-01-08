@@ -10,11 +10,12 @@ function needsStringify(obj) {
 }
 
 export function log(level, ...args) {
-  fs.appendFile(
-    "/Users/mathieuancelin/projects/clever-ai/mpc-test/mcp-otoroshi-proxy/raw.log", 
-    `${Date.now()} [${level}] - ${args.map(a => needsStringify(a) ? JSON.stringify(a) : a).join(' ')} \n\n`,
-    (err) => ''
-  );
+  console.error(`${Date.now()} [${level}] - ${args.map(a => needsStringify(a) ? JSON.stringify(a) : a).join(' ')} \n\n`);
+  // fs.appendFile(
+  //   "/Users/mathieuancelin/projects/clever-ai/mpc-test/mcp-otoroshi-proxy/raw.log", 
+  //   `${Date.now()} [${level}] - ${args.map(a => needsStringify(a) ? JSON.stringify(a) : a).join(' ')} \n\n`,
+  //   (err) => ''
+  // );
 }
 
 export function log_info(...args) {
