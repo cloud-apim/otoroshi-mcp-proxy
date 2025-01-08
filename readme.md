@@ -8,7 +8,7 @@
   Windows: %APPDATA%\Claude\claude_desktop_config.json
   Linux: ~/.config/Claude/claude_desktop_config.json
   ```
-- Add Gemini configuration:
+- Add otoroshi configuration:
   ```json
   {
     "mcpServers": {
