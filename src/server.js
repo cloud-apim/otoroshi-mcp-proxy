@@ -1,8 +1,8 @@
-const { log_error, log_info } = require('./logger');
+import { log_error, log_info } from './logger.js';
 
-const { Proxy } = require('./proxy');
+import { Proxy } from './proxy.js';
 
-exports.Server = function(opts) {
+export function Server(opts) {
 
   let ready = false;
 

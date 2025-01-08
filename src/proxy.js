@@ -1,7 +1,6 @@
-const fetch = require('node-fetch');
-const { log_error, log_info } = require('./logger');
+import fetch from 'node-fetch';
 
-exports.Proxy = function(opts) {
+export function Proxy(opts) {
 
   const endpoint = opts.endpoint || process.env.OTOROSHI_ENDPOINT || 'http://mcp.oto.tools:9999/rpc';
   const clientId = opts.client_id || process.env.OTOROSHI_CLIENT_ID;

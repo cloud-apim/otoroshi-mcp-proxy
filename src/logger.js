@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from 'node:fs';
 
 function isObject(obj) {
   var type = typeof obj;
@@ -9,7 +9,7 @@ function needsStringify(obj) {
   return isObject(obj) || Array.isArray(obj);
 }
 
-function log(level, ...args) {
+export function log(level, ...args) {
   fs.appendFile(
     "/Users/mathieuancelin/projects/clever-ai/mpc-test/mcp-otoroshi-proxy/raw.log", 
     `${Date.now()} [${level}] - ${args.map(a => needsStringify(a) ? JSON.stringify(a) : a).join(' ')} \n\n`,
@@ -17,15 +17,11 @@ function log(level, ...args) {
   );
 }
 
-function log_info(...args) {
+export function log_info(...args) {
   log('INFO', ...args);
 }
 
-function log_error(...args) {
+export function log_error(...args) {
   log('ERROR', ...args);
   console.error(...args)
 }
-
-exports.log = log;
-exports.log_info = log_info;
-exports.log_error = log_error;

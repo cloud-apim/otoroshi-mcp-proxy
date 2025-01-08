@@ -1,5 +1,5 @@
-const { log_error } = require('../src/logger');
-const { Server } = require('../src/server');
+import { log_error } from '../src/logger.js';
+import { Server } from '../src/server.js';
 
 function getServerCapabilities() {
   return {

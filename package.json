@@ -4,6 +4,10 @@
   "description": "Local MCP proxy for otoroshi",
   "author": "Mathieu ANCELIN",
   "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "bin": {
     "otoroshi-mcp-proxy": "./bin/proxy.js"
   },
