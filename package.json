@@ -6,10 +6,11 @@
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
-    "otoroshi-mcp-proxy": "./src/bin.js"
+    "otoroshi-mcp-proxy": "./bin/proxy.js"
   },
   "files": [
-    "bin"
+    "bin",
+    "src"
   ],
   "scripts": {
     "build": "node -e \"require('fs').chmodSync('bin/proxy.js', '755')\""
