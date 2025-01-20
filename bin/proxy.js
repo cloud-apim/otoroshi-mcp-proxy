@@ -3,6 +3,10 @@
 import { log_error } from '../src/logger.js';
 import { Server } from '../src/server.js';
 
+import { start as SseStart } from '../src/sse-proxy.js';
+import { start as WsStart } from '../src/ws-proxy.js';
+import { start as HttpStart } from '../src/http-proxy.js';
+
 function getServerCapabilities() {
   return {
     "tools": {},
@@ -71,15 +75,21 @@ function handleToolCall(id, params) {
   }
 }
 
-try {
-const server = Server({
-  //capabilities: getServerCapabilities(),
-  //infos: getServerInfos(),
-  tools: getToolList,
-  handleToolCall
-});
-
-server.start();
-} catch(e) {
-  log_error(e.message)
+const transport = (process.env.OTOROSHI_TRANSPORT || 'ws').toLowerCase();
+if (transport === 'http') {
+  HttpStart();
+} else if (transport === 'sse') {
+  SseStart();
+} else if (transport === 'ws') {
+  WsStart();
+} else {
+  try {
+    const server = Server({
+      tools: getToolList,
+      handleToolCall
+    });
+    server.start();
+  } catch(e) {
+    log_error(e.message)
+  }
 }

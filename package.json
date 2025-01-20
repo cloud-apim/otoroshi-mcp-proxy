@@ -16,6 +16,12 @@
     "build": "node -e \"require('fs').chmodSync('bin/proxy.js', '755')\""
   },
   "dependencies": {
-    "node-fetch": "2.7.0"
+    "@modelcontextprotocol/sdk": "1.0.1",
+    "express": "^4.21.1",
+    "mcp-js-server": "^0.1.2",
+    "node-fetch": "2.7.0",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.5"
   }
 }
