@@ -75,7 +75,7 @@ function handleToolCall(id, params) {
   }
 }
 
-const transport = (process.env.OTOROSHI_TRANSPORT || 'ws').toLowerCase();
+const transport = (process.env.OTOROSHI_TRANSPORT || 'http').toLowerCase();
 if (transport === 'http') {
   HttpStart();
 } else if (transport === 'sse') {
