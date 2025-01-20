@@ -75,7 +75,11 @@ function handleToolCall(id, params) {
   }
 }
 
+console.error('env', JSON.stringify(process.env))
+
 const transport = (process.env.OTOROSHI_TRANSPORT || 'http').toLowerCase();
+console.error('transport: ' + transport)
+
 if (transport === 'http') {
   HttpStart();
 } else if (transport === 'sse') {
