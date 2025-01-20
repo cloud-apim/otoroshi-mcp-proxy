@@ -22,3 +22,9 @@
       }
     }
   }
+
+## Env. variables
+
+* `OTOROSHI_ENDPOINT`: your otoroshi proxy endpoint url
+* `OTOROSHI_TOKEN`: your otoroshi apikey to acces your proxy
+* `OTOROSHI_TRANSPORT`: possible values are `http`, `sse`, `ws`, `legacy`
